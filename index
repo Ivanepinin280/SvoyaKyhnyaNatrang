@@ -325,7 +325,7 @@
    НАСТРОЙКА: вставьте сюда URL вашего Google Apps Script Web App
    (как получить — см. README.md, шаг "Деплой")
 =================================================================== */
-const BACKEND_URL = 'https://script.google.com/macros/s/ВАШ_ID_СКРИПТА/exec';
+const BACKEND_URL = 'https://script.google.com/macros/s/1NA5WLKvP15Dyh6i8KFmm5zaG7LVrDOgdz6f8PAAX3FKoXBoSdBRBzPES/exec';
 
 const tg = window.Telegram?.WebApp;
 try{ tg?.expand(); tg?.ready(); }catch(e){}
