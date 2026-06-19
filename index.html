@@ -40,6 +40,29 @@
   }
   ::selection{ background: var(--yolk); color: var(--ink); }
 
+  /* На широких экранах (десктоп) ограничиваем ширину контента,
+     чтобы карточки блюд не растягивались на весь экран */
+  .app-shell{
+    max-width: 480px;
+    margin: 0 auto;
+    position: relative;
+  }
+  @media (min-width: 600px){
+    body{ background: var(--ink-soft); }
+    .app-shell{
+      background: var(--ink);
+      min-height: 100vh;
+      box-shadow: 0 0 60px rgba(0,0,0,0.4);
+    }
+    .cart-bar{ max-width: 448px; width: calc(100% - 32px); left: 50%; right: auto; transform: translate(-50%, 120%); }
+    .cart-bar.show{ transform: translate(-50%, 0); }
+    .sheet{ max-width: 480px; width: 100%; left: 50%; right: auto; transform: translate(-50%, 100%); }
+    .sheet.show{ transform: translate(-50%, 0); }
+    .sheet-overlay{ max-width: none; }
+    .tabbar{ left: calc(50% + 240px - 54px); right: auto; }
+    .day-tag{ position: sticky; }
+  }
+
   /* ============== ШАПКА ДНЯ — сигнатурный элемент: "бирка чека" ============== */
   .day-tag{
     position: sticky; top:0; z-index: 30;
@@ -74,7 +97,7 @@
   }
   .dish.is-out{ opacity:.55; }
   .dish__img-wrap{
-    width:100%; aspect-ratio: 16/10; background: #14201a;
+    width:100%; aspect-ratio: 16/9; max-height: 160px; background: #14201a;
     position:relative; overflow:hidden;
   }
   .dish__img-wrap img{ width:100%; height:100%; object-fit:cover; display:block; }
@@ -238,6 +261,8 @@
 </head>
 <body>
 
+  <div class="app-shell">
+
   <div class="tabbar">
     <button class="icon-btn" id="historyBtn" aria-label="История заказов">🕘</button>
   </div>
@@ -317,6 +342,8 @@
     </div>
     <div class="sheet__body" id="historyList"></div>
   </section>
+
+  </div><!-- /app-shell -->
 
   <div class="toast" id="toast"></div>
 
